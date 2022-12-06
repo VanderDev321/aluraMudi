@@ -1,0 +1,36 @@
+<html>
+	<head th:replace="~{base::head}"><div th:replace="~{base::title('Novo Cadastro')}"><title></title></div></head>
+	<body>
+		<div th:replace="~{base::logo}"/>
+		<div class="container">
+			<div th:replace="~{base::titulo('Cadastro de Usuário')}"/>
+			
+			<div class="card mt-3">
+				<form th:object="${requisicaoNovoUsuario}"class="card-body" th:action="@{/cadastro/novo}" method="POST">
+				
+					<div class="form-group" >			
+						<label class="form-label" for="nomeUsuario">Cadastrar Novo Usuário</label>
+						<input th:field="*{nomeUsuario}" th:errorclass="is-invalid" class="form-control"  placeholder="insira o nome" />
+						<small>informe qual o nome do usuário</small>
+						<div  th:errors="*{nomeUsuario}" class="invalid-feedback">é preciso preencher </div>	
+					</div>
+					
+						
+					
+					<div class="form-group">			
+						<label class="form-label" for="senha">Insira uma senha</label>
+						<input   type="password" th:field="*{senha}"  th:errorclass="is-invalid" class="form-control"  placeholder="crie uma senha"/>
+						<small>a senha deve conter no mínimo 4 caracteres</small>
+						<div  th:errors="*{senha}" class="invalid-feedback" ></div>
+					</div>
+						
+					
+						<button class="btn btn-primary" type="submit">Cadastrar</button>
+					
+			
+				</form>
+			</div>	
+		</div>
+	</body>
+
+</html>
